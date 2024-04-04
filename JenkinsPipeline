@@ -2,15 +2,14 @@ pipeline {
     agent any
 
     environment {
-        GIT_URL = 'https://github.com/yourusername/yourrepository.git'
-        CREDENTIAL_ID = 'mykubeconfig'
+        GIT_URL = 'https://username:password@github.com/yourusername/yourrepository.git'
     }
 
     stages {
         stage('Clone Git Repository') {
             steps {
                 script {
-                    git credentialsId: 'jenkins-git-credentials', url: GIT_URL
+                    git url: GIT_URL
                 }
             }
         }
